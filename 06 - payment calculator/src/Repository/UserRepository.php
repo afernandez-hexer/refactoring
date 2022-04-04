@@ -2,12 +2,16 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
+
 interface UserRepository
 {
+    public function save(User $user): void;
+
     /**
-     * Devuelve un array de los usuarios que han trabajado en una fecha concreta
-     *
-     * @return array
+     * Devuelve un array de objectos User
      */
-    public function findWhoWorkedIn(\DateTime $date) : array;
+    public function findWorkers() : array;
+
+    public function findWorkerByEmail(string $email) : User;
 }
