@@ -4,35 +4,31 @@ namespace App;
 
 class PrimeGenerator
 {
-	public function generate($number)
+	public function nextPrimeFrom(int $number): int
 	{
 		if ($number<1) {
 			throw new \RuntimeException("Bad parameter");
 		}
 
-		if ($number == 1) {
-			return 2;
-		}
-
-		$f = false;
-
 		do {
 			$number++;
-
-			$x = (int) floor(sqrt($number));
-			
-			for ($i = 2; $i <= $x; $i++) {
-				if ($number % $i == 0) {
-					break;
-				}
-			}
-
-			if ($x == $i-1) {
-				$f = true;
-			}
-
-		} while ($f == false);
+		} while (!$this->isPrime($number));
 
 		return $number;
+	}
+
+	private function isPrime(int $number): bool
+	{
+		$maxDivisor = (int) floor(sqrt($number));
+			
+		for ($i = 2; $i <= $maxDivisor; $i++) {
+			$isDivisible = ($number % $i == 0);
+
+			if ($isDivisible) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

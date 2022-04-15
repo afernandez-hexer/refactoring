@@ -11,14 +11,14 @@ class PrimeGeneratorTest extends TestCase
 
         $sut = $this->createSUT();
 
-        $sut->generate(-2);
+        $sut->nextPrimeFrom(-2);
     }
 
     public function testGenerateReturnsTwoIfOneIsPassed()
     {
         $sut = $this->createSUT();
 
-        $result = $sut->generate(1);
+        $result = $sut->nextPrimeFrom(1);
 
         $this->assertEquals(2, $result);
     }
@@ -30,7 +30,7 @@ class PrimeGeneratorTest extends TestCase
     {
         $sut = $this->createSUT();
 
-        $result = $sut->generate($number);
+        $result = $sut->nextPrimeFrom($number);
 
         $this->assertEquals($nextPrime, $result);
     }
