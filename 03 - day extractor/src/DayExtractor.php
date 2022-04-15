@@ -18,12 +18,12 @@ class DayExtractor
     {
         $result = [];
 
-        $limit = clone $start;
+        $date = clone $start;
 
-        while ($limit <= $end) {
-            $result[] = clone $limit;
+        while ($date <= $end) {
+            $result[] = clone $date;
 
-            $limit->add(new \DateInterval('P1D'));
+            $date->add(new \DateInterval('P1D'));
         };
 
         return $result;
