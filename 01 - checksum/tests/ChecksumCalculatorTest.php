@@ -1,9 +1,9 @@
 <?php
 
-use App\ChecksumFactory;
+use App\ChecksumCalculator;
 use PHPUnit\Framework\TestCase;
 
-class ChecksumFactoryTest extends TestCase
+class ChecksumCalculatorTest extends TestCase
 {
     public function testChecksumReturnsSha256IfFileExists()
     {
@@ -12,7 +12,7 @@ class ChecksumFactoryTest extends TestCase
 
         $sut = $this->createSUT();
 
-        $result = $sut->checksum($file);
+        $result = $sut->calculateChecksum($file);
 
         $this->assertTrue(is_string($result));
         $this->assertEquals($expectedChecksum, $result);
@@ -26,12 +26,12 @@ class ChecksumFactoryTest extends TestCase
 
         $sut = $this->createSUT();
 
-        $sut->checksum($notExistingFile);        
+        $sut->calculateChecksum($notExistingFile);        
     }
 
     private function createSUT()
     {
-        return new ChecksumFactory();
+        return new ChecksumCalculator();
     }
 
     private function getTestFile()
