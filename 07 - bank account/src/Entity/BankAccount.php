@@ -14,5 +14,5 @@ class BankAccount
 
     public string $accountNumber;
 
-    public string $swift;
+    public ?string $swift;
 }
